@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * comment
+ * Comment
  *
  * @ORM\Table(name="comment")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\commentRepository")
@@ -45,14 +45,15 @@ class Comment
     /**
      * @var Article()
      *
-     * @ORM\ManyToOne(targetEntity="Article")
-     * @orm\JoinColumn(nullable=false);
+     * @ORM\ManyToOne(targetEntity="Article" , inversedBy="comments")
+     * @ORM\JoinColumn(nullable=false);
      */
     private $article;
     
     
-    function __construct() {
+    function __construct(\AppBundle\Entity\Article $art) {
         $this->date = new \DateTime();
+        $this->setArticle($art);
         
     }
     
@@ -138,5 +139,28 @@ class Comment
     {
         return $this->date;
     }
-}
 
+    /**
+     * Set article
+     *
+     * @param \AppBundle\Entity\Article $article
+     *
+     * @return Comment
+     */
+    public function setArticle(\AppBundle\Entity\Article $article)
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+
+    /**
+     * Get article
+     *
+     * @return \AppBundle\Entity\Article
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
+}

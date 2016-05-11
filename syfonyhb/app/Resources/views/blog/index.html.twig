@@ -10,8 +10,13 @@
     {% for article in articles %}
     <p>{{article.id}} - <em>{{article.titre}}</em>
         {% if article.image %}
-           <img src="{{article.image.url}}" alt="{{article.image.alt}}" ><br>
+           <img src="{{article.image.url}}" alt="{{article.image.alt}}" width="10%" height="10%" ><br>
         {% endif %}
+        <br>  
+        {% for categorie in article.categories  %}
+            <a class="btn btn-link" href="{{path('blog_categorie', {id:categorie.id})}}">{{categorie.titre}}</a>
+        {% endfor %}      
+        <br>
         <a class="btn btn-warning" href="{{path('blog_detail', {id:article.id})}}">Voir &rarr;</a>
     <p>
     {% endfor %}

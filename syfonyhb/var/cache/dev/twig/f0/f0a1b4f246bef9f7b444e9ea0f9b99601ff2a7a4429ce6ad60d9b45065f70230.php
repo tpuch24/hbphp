@@ -22,20 +22,20 @@ class __TwigTemplate_58a3c195059cf23c1b2feab76d0e1d7fb650cdbad904d297e41c2bd4a8b
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_174449c564742b8153423d44a09c271bf76bdfc4b2c15592e30cc60a4cb8bba7 = $this->env->getExtension("native_profiler");
-        $__internal_174449c564742b8153423d44a09c271bf76bdfc4b2c15592e30cc60a4cb8bba7->enter($__internal_174449c564742b8153423d44a09c271bf76bdfc4b2c15592e30cc60a4cb8bba7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "blog/detail.html.twig"));
+        $__internal_0cf12ed6bc0566ca38a0f050db48f68731c03bb4943c4b781dd418b3c16bcff1 = $this->env->getExtension("native_profiler");
+        $__internal_0cf12ed6bc0566ca38a0f050db48f68731c03bb4943c4b781dd418b3c16bcff1->enter($__internal_0cf12ed6bc0566ca38a0f050db48f68731c03bb4943c4b781dd418b3c16bcff1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "blog/detail.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_174449c564742b8153423d44a09c271bf76bdfc4b2c15592e30cc60a4cb8bba7->leave($__internal_174449c564742b8153423d44a09c271bf76bdfc4b2c15592e30cc60a4cb8bba7_prof);
+        $__internal_0cf12ed6bc0566ca38a0f050db48f68731c03bb4943c4b781dd418b3c16bcff1->leave($__internal_0cf12ed6bc0566ca38a0f050db48f68731c03bb4943c4b781dd418b3c16bcff1_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_a1ded16b9736b8f70ffd3b5360330825ad47b26baf18b19a3caf6a2da70fa2d9 = $this->env->getExtension("native_profiler");
-        $__internal_a1ded16b9736b8f70ffd3b5360330825ad47b26baf18b19a3caf6a2da70fa2d9->enter($__internal_a1ded16b9736b8f70ffd3b5360330825ad47b26baf18b19a3caf6a2da70fa2d9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_08867d17ea9985e65d36440c61d4130210244a081ce4a87b1d36d23944dd1e00 = $this->env->getExtension("native_profiler");
+        $__internal_08867d17ea9985e65d36440c61d4130210244a081ce4a87b1d36d23944dd1e00->enter($__internal_08867d17ea9985e65d36440c61d4130210244a081ce4a87b1d36d23944dd1e00_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo " ";
         $this->displayParentBlock("title", $context, $blocks);
@@ -43,15 +43,15 @@ class __TwigTemplate_58a3c195059cf23c1b2feab76d0e1d7fb650cdbad904d297e41c2bd4a8b
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "titre", array()), "html", null, true);
         echo " ";
         
-        $__internal_a1ded16b9736b8f70ffd3b5360330825ad47b26baf18b19a3caf6a2da70fa2d9->leave($__internal_a1ded16b9736b8f70ffd3b5360330825ad47b26baf18b19a3caf6a2da70fa2d9_prof);
+        $__internal_08867d17ea9985e65d36440c61d4130210244a081ce4a87b1d36d23944dd1e00->leave($__internal_08867d17ea9985e65d36440c61d4130210244a081ce4a87b1d36d23944dd1e00_prof);
 
     }
 
     // line 5
     public function block_body($context, array $blocks = array())
     {
-        $__internal_c227e9c0b0951ba4d87e6d7dda614bd7662d1a4094337a19a6f3db3aae013338 = $this->env->getExtension("native_profiler");
-        $__internal_c227e9c0b0951ba4d87e6d7dda614bd7662d1a4094337a19a6f3db3aae013338->enter($__internal_c227e9c0b0951ba4d87e6d7dda614bd7662d1a4094337a19a6f3db3aae013338_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_d2e18ef36fa9e24e1d3f933e0693d9bb317c2bcb2eda0db719555faeaedb3cb8 = $this->env->getExtension("native_profiler");
+        $__internal_d2e18ef36fa9e24e1d3f933e0693d9bb317c2bcb2eda0db719555faeaedb3cb8->enter($__internal_d2e18ef36fa9e24e1d3f933e0693d9bb317c2bcb2eda0db719555faeaedb3cb8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
         echo "    ";
@@ -97,19 +97,20 @@ class __TwigTemplate_58a3c195059cf23c1b2feab76d0e1d7fb650cdbad904d297e41c2bd4a8b
         echo "        <em>";
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "date", array()), "d-m-yy"), "html", null, true);
         echo "</em>
+
         <a class=\"btn btn-warning\" href=\"";
-        // line 17
+        // line 18
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("blog_modify", array("id" => $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "id", array()))), "html", null, true);
         echo "\">Modifier &rarr;</a>
         <a class=\"btn btn-warning\" href=\"";
-        // line 18
+        // line 19
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("blog_delete", array("id" => $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "id", array()))), "html", null, true);
         echo "\">Supprimer &rarr;</a>
     
     <p>
 ";
         
-        $__internal_c227e9c0b0951ba4d87e6d7dda614bd7662d1a4094337a19a6f3db3aae013338->leave($__internal_c227e9c0b0951ba4d87e6d7dda614bd7662d1a4094337a19a6f3db3aae013338_prof);
+        $__internal_d2e18ef36fa9e24e1d3f933e0693d9bb317c2bcb2eda0db719555faeaedb3cb8->leave($__internal_d2e18ef36fa9e24e1d3f933e0693d9bb317c2bcb2eda0db719555faeaedb3cb8_prof);
 
     }
 
@@ -125,7 +126,7 @@ class __TwigTemplate_58a3c195059cf23c1b2feab76d0e1d7fb650cdbad904d297e41c2bd4a8b
 
     public function getDebugInfo()
     {
-        return array (  106 => 18,  102 => 17,  97 => 16,  83 => 13,  79 => 12,  76 => 11,  68 => 9,  66 => 8,  62 => 7,  57 => 6,  51 => 5,  35 => 3,  11 => 1,);
+        return array (  107 => 19,  103 => 18,  97 => 16,  83 => 13,  79 => 12,  76 => 11,  68 => 9,  66 => 8,  62 => 7,  57 => 6,  51 => 5,  35 => 3,  11 => 1,);
     }
 }
 /* {% extends "blog/layout.html.twig" %}*/
@@ -144,6 +145,7 @@ class __TwigTemplate_58a3c195059cf23c1b2feab76d0e1d7fb650cdbad904d297e41c2bd4a8b
 /*             <br>*/
 /*         {% endfor %}*/
 /*         <em>{{article.date|date("d-m-yy")}}</em>*/
+/* */
 /*         <a class="btn btn-warning" href="{{path('blog_modify', {id:article.id})}}">Modifier &rarr;</a>*/
 /*         <a class="btn btn-warning" href="{{path('blog_delete', {id:article.id})}}">Supprimer &rarr;</a>*/
 /*     */

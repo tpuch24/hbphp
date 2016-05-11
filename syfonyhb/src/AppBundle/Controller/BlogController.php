@@ -45,11 +45,11 @@ class BlogController extends Controller
         
         $article = $repA->find($id);
         
-        $repB = $this->getDoctrine()
+        $repC = $this->getDoctrine()
                 ->getManager()
                 ->getRepository('AppBundle:Comment');
         
-        $comments = $repB->findByArticle($article, ["date" => "DESC"] );
+        $comments = $repC->findByArticle($article, ["date" => "DESC"] );
                 
         return $this->render('blog/detail.html.twig', [
             'article' => $article, 'comments' => $comments,
@@ -105,7 +105,6 @@ class BlogController extends Controller
             return "";
         }
         catch (\PDOException $e){
-     
          }
 
         return $this->render('blog/delete.html.twig', [
@@ -119,7 +118,7 @@ class BlogController extends Controller
     public function addAction(Request $request)
     {
         $article = new Article();
-        $article->setTitre("Hello world x !");
+        $article->setTitre("Hello world x +1 !");
         $article->setContenu(" Xème édition de notre OPEN DU MUGUET
 Et c'est !!!
 Très peu de modificatinge pas une form tables ci-dessous... ....</strong>");
@@ -133,15 +132,30 @@ Très peu de modificatinge pas une form tables ci-dessous... ....</strong>");
         
         $doctrine = $this->getDoctrine();
         $em = $doctrine->getManager();
-  //Ecriture en base d'un objet
+        
+        $cat1 = new \AppBundle\Entity\Categorie("Tutorial");
+        $cat2 = new \AppBundle\Entity\Categorie("Funny");
+        
+        $article->addCategory($cat1);
+        $article->addCategory($cat2);
+        
+        
+      //Ecriture en base des objets categories
+        $em->persist($cat1);
+        $em->persist($cat2);        
+        try {
+            $em->flush();
+        }
+        catch (\PDOException $e){
+        }      
+
+      //Ecriture en base d'un objet  article
         $em->persist($article);
         try {
             $em->flush();
         }
-        
- catch (\PDOException $e){
-     
- }      
+        catch (\PDOException $e){
+        }      
 
         $comm1 = new \AppBundle\Entity\Comment($article);
         $comm1->setContenu("Ceci est un commentaire 1");
@@ -181,6 +195,25 @@ Très peu de modificatinge pas une form tables ci-dessous... ....</strong>");
         
         return $this->render('blog/footer.html.twig',  [
             'articles' => $articles
+        ]);
+        
+    }
+    
+    
+      /**
+     * @Route("/categorie/{id}", name="blog_categorie",
+     * )
+     */
+    public function categorieAction(Request $request, $id)
+    {          
+         $doctrine = $this->getDoctrine();
+        $em = $doctrine->getManager();
+        $repCa = $em->getRepository('AppBundle:Categorie');
+        
+        $categorie = $repCa->find($id);
+        
+        return $this->render('blog/categorie.html.twig', [
+            'titre' => $categorie->getTitre(), 'articles' => $categorie->getArticles()
         ]);
         
     }
