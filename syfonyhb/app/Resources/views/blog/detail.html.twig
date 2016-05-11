@@ -1,0 +1,21 @@
+{% extends "blog/layout.html.twig" %}
+
+{% block title %} {{parent()}} - Edit - {{article.titre}} {% endblock %}
+
+{% block body %}
+    {{article.id}}<br>
+    <p>{{article.contenu | raw}}<br>
+        {% if article.image %}
+           <img src="{{article.image.url}}" alt="{{article.image.alt}}" ><br>
+        {% endif %}
+    <hr>
+        {% for comment in comments  %}
+            {{comment.getContenu()}} ecrit par {{comment.getAuteur()}} le {{comment.getDate().format("d-m-yy")}};
+            <br>
+        {% endfor %}
+        <em>{{article.date|date("d-m-yy")}}</em>
+        <a class="btn btn-warning" href="{{path('blog_modify', {id:article.id})}}">Modifier &rarr;</a>
+        <a class="btn btn-warning" href="{{path('blog_delete', {id:article.id})}}">Supprimer &rarr;</a>
+    
+    <p>
+{% endblock %}

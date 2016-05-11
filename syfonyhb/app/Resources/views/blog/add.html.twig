@@ -1,0 +1,9 @@
+{% extends "blog/layout.html.twig" %}
+
+{% block title %} {{parent()}} - Ajout {% endblock %}
+
+{% block body %}
+    <h2>Ajout d'article</h2>
+    {% include "blog/form.html.twig" %}
+{% dump(article) %}
+{% endblock %}
