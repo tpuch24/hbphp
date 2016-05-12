@@ -25,9 +25,10 @@ class BlogController extends Controller
         $repA = $em->getRepository('AppBundle:Article');
         
         //Lecture article
-          $articles = $repA->findAll();
+          //$articles = $repA->findAll();
           
-        
+        $articles = $repA->getArticlesIndex();
+          
         return $this->render('blog/index.html.twig', [
             'page' => $page, 'articles' => $articles
         ]);
@@ -66,6 +67,8 @@ class BlogController extends Controller
         $doctrine = $this->getDoctrine();
         $em = $doctrine->getManager();
         $repA = $em->getRepository('AppBundle:Article');
+        
+        
         //Lecture article
           $article = $repA->find($id);
           $article->setTitre("Update - ".$article->getTitre());
@@ -206,15 +209,19 @@ Très peu de modificatinge pas une form tables ci-dessous... ....</strong>");
      */
     public function categorieAction(Request $request, $id)
     {          
-         $doctrine = $this->getDoctrine();
+        $doctrine = $this->getDoctrine();
         $em = $doctrine->getManager();
         $repCa = $em->getRepository('AppBundle:Categorie');
         
         $categorie = $repCa->find($id);
+        $repA = $em->getRepository('AppBundle:Article');
         
         return $this->render('blog/categorie.html.twig', [
-            'titre' => $categorie->getTitre(), 'articles' => $categorie->getArticles()
+            'titre' => $categorie->getTitre(), 'articles' => $repA->getArticlesByCategorie($categorie)
         ]);
+//        return $this->render('blog/categorie.html.twig', [
+//            'titre' => $categorie->getTitre(), 'articles' => $categorie->getArticles()
+//        ]);
         
     }
 }

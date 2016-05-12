@@ -10,4 +10,59 @@ namespace AppBundle\Repository;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
+    
+    public function getArticlesIndex() {
+        //$qb= $this->createQueryBuilder("a");
+        
+        //equivalent a
+        //$qb=$this->_em->createQueryBuilder()->select("a")->from("$this->_entityName"AppBundle:Article", "a"); //
+        //equivalent a
+        //$qb=$this->_em->createQueryBuilder()->select("a")->from($this->_entityName, "a"); //
+        $pub = 1;
+        
+        $qb= $this->createQueryBuilder("a")
+             ->leftJoin("a.image", "i")
+             ->addSelect("i")
+             ->leftJoin("a.categories", "c")
+             ->addSelect("c")
+             ->setParameter("pub", $pub)
+             ->where("a.publication = :pub")         
+             
+                
+             ->orderBy("a.date","DESC");
+        
+        
+        $query = $qb->getQuery();
+        
+        return $query->getResult();
+        //return $query->getArrayResult();
+                
+    }
+    
+    public function getArticlesByCategorie($categorie) {
+        //$qb= $this->createQueryBuilder("a");
+        
+        //equivalent a
+        //$qb=$this->_em->createQueryBuilder()->select("a")->from("$this->_entityName"AppBundle:Article", "a"); //
+        //equivalent a
+        //$qb=$this->_em->createQueryBuilder()->select("a")->from($this->_entityName, "a"); //
+        $pub = 1;
+        
+        $qb= $this->createQueryBuilder("a")
+             ->leftJoin("a.image", "i")
+             ->addSelect("i")
+             ->leftJoin("a.categories", "c")
+             ->where("a.publication = :pub")           
+             ->andWhere(" c = :cat")
+             ->setParameter("pub", $pub)
+             ->setParameter("cat", $categorie)
+             ->orderBy("a.date","DESC");
+        
+        
+        $query = $qb->getQuery();
+        
+        return $query->getResult();
+        //return $query->getArrayResult();
+                
+    }
 }
