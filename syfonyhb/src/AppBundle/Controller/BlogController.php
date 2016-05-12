@@ -3,11 +3,12 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Article;
-use DateTime;
+use AppBundle\Form\ArticleType;
+use PDOException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\Extension\Core\Type;
+
 
 /**
  *  @Route("/blog")
@@ -81,7 +82,7 @@ class BlogController extends Controller
         try {
             $em->flush();
         }
-        catch (\PDOException $e){
+        catch (PDOException $e){
      
          }
 
@@ -110,7 +111,7 @@ class BlogController extends Controller
             
             return "";
         }
-        catch (\PDOException $e){
+        catch (PDOException $e){
          }
 
         return $this->render('blog/delete.html.twig', [
@@ -191,15 +192,55 @@ class BlogController extends Controller
         // puis getForm() pour generer les élements de fond
         // puis createView() pour generer le HTML correspondant
         $article = new Article();
-        $formBuilder = $this->createFormBuilder($article)
-        ->add("titre", Type\TextType::class)
-        ->add("contenu", Type\TextareaType::class)
-        ->add("date", Type\DateType::class)
-        ->add("publication", Type\CheckboxType::class)
-        ->add("submit", Type\SubmitType::class)
-        ;        
         
-        $form = $formBuilder->getForm();
+        
+        
+//        
+//        $formBuilder = $this->createFormBuilder($article)
+//        ->add("titre", Type\TextType::class)
+//        ->add("auteur", Type\TextType::class)
+//        ->add("contenu", Type\TextareaType::class)
+//        ->add("date", Type\DateType::class)
+//        ->add("publication", Type\CheckboxType::class,
+//                ['required' => false])
+//        
+//        ->add("submit", Type\SubmitType::class,
+//                ['label' => 'Ajouter'])
+//        ;        
+//        
+//        $form = $formBuilder->getForm();
+//        
+        
+        $form= $this->createForm(ArticleType::class, $article);
+        
+        $session = $this->get('session');
+        
+        if ($request->getMethod() == 'POST'){
+            $form->handleRequest($request);
+            
+            if ($form->isSubmitted() && $form->isvalid()){
+                //$article->setOwner();
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($article);
+                
+                //Ajout image - ancien
+                 
+//                $image = new \AppBundle\Entity\Image();
+//                $image ->setAlt("une image");
+//                $image ->setUrl('https://robohash.org/'. md5(uniqid()));
+//
+//                $article->setImage($image);     
+
+                try {
+                    $em->flush();
+                    return $this->redirectToRoute('blog_detail');
+                    
+                } catch (Exception $ex) {
+
+                }
+            }
+        }
+        
         
         return $this->render('blog/add.html.twig', [
                 'form' => $form->createView(),

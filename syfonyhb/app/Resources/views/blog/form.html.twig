@@ -1,8 +1,21 @@
 {# empty Twig template #}
+{# Cree les balise de debut #}
 
 {{ form_start(form) }}
 
-{{ form_widget(form) }}
+{#{{ form_widget(form) }} #}
+{# {{form_row(form.titre)}}<hr> #}
+
+{{form_label(form.titre, "Entrez le titre de l'article",
+{'label_attr':{'class':'maClasse', 'title':'Le titre'}})
+}}<br>
+{{form_widget(form.titre,{
+'attr':{'placeholder':'Titre'}
+})}}<br>
+{{form_errors(form.titre)}}<br>
+
+{# Ajoute le jeton et la balise de fin de form </form> #}
 
 {{ form_end(form) }}
-    
+
+{# {{ form(form) }} #}
