@@ -79,6 +79,12 @@ class Article
      */
     private $comments; 
     
+ /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_modification", type="datetime")
+     */
+    private $date_modification; 
     
     function __construct() {
         $this->publication = true;

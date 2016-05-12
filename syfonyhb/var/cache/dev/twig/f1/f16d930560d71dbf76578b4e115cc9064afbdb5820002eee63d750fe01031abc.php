@@ -15,17 +15,28 @@ class __TwigTemplate_af3f977a8d8dedd89118304cd31732c974b1627fd0d7bfce0a5dff7a54b
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_63ed5db5ead34c607b047b45ab34bb674ceceea4830bb4d609edcacd56d62ebd = $this->env->getExtension("native_profiler");
-        $__internal_63ed5db5ead34c607b047b45ab34bb674ceceea4830bb4d609edcacd56d62ebd->enter($__internal_63ed5db5ead34c607b047b45ab34bb674ceceea4830bb4d609edcacd56d62ebd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "blog/form.html.twig"));
+        $__internal_0403afeb04d9c4b1ea6dfa46aacd87321abe2d79111df6a0bbde9230b593447e = $this->env->getExtension("native_profiler");
+        $__internal_0403afeb04d9c4b1ea6dfa46aacd87321abe2d79111df6a0bbde9230b593447e->enter($__internal_0403afeb04d9c4b1ea6dfa46aacd87321abe2d79111df6a0bbde9230b593447e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "blog/form.html.twig"));
 
         // line 2
         echo "
-<h1>
-    Je suis le formulaire
-</h1>
+";
+        // line 3
+        echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_start');
+        echo "
+
+";
+        // line 5
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'widget');
+        echo "
+
+";
+        // line 7
+        echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
+        echo "
     ";
         
-        $__internal_63ed5db5ead34c607b047b45ab34bb674ceceea4830bb4d609edcacd56d62ebd->leave($__internal_63ed5db5ead34c607b047b45ab34bb674ceceea4830bb4d609edcacd56d62ebd_prof);
+        $__internal_0403afeb04d9c4b1ea6dfa46aacd87321abe2d79111df6a0bbde9230b593447e->leave($__internal_0403afeb04d9c4b1ea6dfa46aacd87321abe2d79111df6a0bbde9230b593447e_prof);
 
     }
 
@@ -34,14 +45,21 @@ class __TwigTemplate_af3f977a8d8dedd89118304cd31732c974b1627fd0d7bfce0a5dff7a54b
         return "blog/form.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  22 => 2,);
+        return array (  35 => 7,  30 => 5,  25 => 3,  22 => 2,);
     }
 }
 /* {# empty Twig template #}*/
 /* */
-/* <h1>*/
-/*     Je suis le formulaire*/
-/* </h1>*/
+/* {{ form_start(form) }}*/
+/* */
+/* {{ form_widget(form) }}*/
+/* */
+/* {{ form_end(form) }}*/
 /*     */

@@ -5,7 +5,7 @@
 
 {% block body %}
 <h1>
-    Catégorie : {{titre}}
+    Catégorie : {{titre}} -{{count}} Article(s) - Page {{page}}
 </h1>
     {% for article in articles %}
     <p>{{article.id}} - <em>{{article.titre}}</em>

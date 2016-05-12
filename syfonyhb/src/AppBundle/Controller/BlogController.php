@@ -7,12 +7,17 @@ use DateTime;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type;
 
 /**
  *  @Route("/blog")
  */
 class BlogController extends Controller
 {
+
+    const PAGINATION_IND = 5; 
+    const PAGINATION_CAT = 2; 
+
     /**
      * @Route("/index", name="blog_index",
      * defaults={"page":1}, requirements={"page":"\d+"}
@@ -75,8 +80,6 @@ class BlogController extends Controller
         //Update en base d'un objet
         try {
             $em->flush();
-            
-            return "";
         }
         catch (\PDOException $e){
      
@@ -120,67 +123,86 @@ class BlogController extends Controller
      */
     public function addAction(Request $request)
     {
+//        $article = new Article();
+//        $article->setTitre("Hello world x +2 !");
+//        $article->setContenu(" Xème édition de notre OPEN DU MUGUET
+//Et c'est !!!
+//Très peu de modificatinge pas une form tables ci-dessous... ....</strong>");
+//        $article->setAuteur("Monique DURAND");
+//        
+//        $image = new \AppBundle\Entity\Image();
+//        $image ->setAlt("Mon image");
+//        $image ->setUrl('https://robohash.org/'. md5(uniqid()));
+//        
+//        $article->setImage($image);     
+//        
+//        $doctrine = $this->getDoctrine();
+//        $em = $doctrine->getManager();
+//        
+//        $cat1 = new \AppBundle\Entity\Categorie("Tutorial");
+//        $cat2 = new \AppBundle\Entity\Categorie("Funny");
+//        
+//        $article->addCategory($cat1);
+//        $article->addCategory($cat2);
+//        
+//        
+//      //Ecriture en base des objets categories
+//        $em->persist($cat1);
+//        $em->persist($cat2);        
+//        try {
+//            $em->flush();
+//        }
+//        catch (\PDOException $e){
+//        }      
+//
+//      //Ecriture en base d'un objet  article
+//        $em->persist($article);
+//        try {
+//            $em->flush();
+//        }
+//        catch (\PDOException $e){
+//        }      
+//
+//        $comm1 = new \AppBundle\Entity\Comment($article);
+//        $comm1->setContenu("Ceci est un commentaire 1");
+//        $comm1->setAuteur("FRANCOIS François");   
+// 
+//        $comm2 = new \AppBundle\Entity\Comment($article);
+//        $comm2->setContenu("Ceci est un commentaire 2");
+//        $comm2->setAuteur("MARC François");
+// 
+//        $em->persist($comm1);
+//        $em->persist($comm2);
+//        
+
+//        try {
+//            $em->flush();
+//        }
+//       
+//        catch (\PDOException $e){
+//
+//        }      
+// 
+//        return $this->render('blog/add.html.twig', [
+//                'article' => $article,
+//                ]);
+        
+        //Creation d'un formulaire à partir de l'entité
+        // puis getForm() pour generer les élements de fond
+        // puis createView() pour generer le HTML correspondant
         $article = new Article();
-        $article->setTitre("Hello world x +1 !");
-        $article->setContenu(" Xème édition de notre OPEN DU MUGUET
-Et c'est !!!
-Très peu de modificatinge pas une form tables ci-dessous... ....</strong>");
-        $article->setAuteur("Monique DURAND");
+        $formBuilder = $this->createFormBuilder($article)
+        ->add("titre", Type\TextType::class)
+        ->add("contenu", Type\TextareaType::class)
+        ->add("date", Type\DateType::class)
+        ->add("publication", Type\CheckboxType::class)
+        ->add("submit", Type\SubmitType::class)
+        ;        
         
-        $image = new \AppBundle\Entity\Image();
-        $image ->setAlt("Mon image");
-        $image ->setUrl('https://robohash.org/'. md5(uniqid()));
+        $form = $formBuilder->getForm();
         
-        $article->setImage($image);     
-        
-        $doctrine = $this->getDoctrine();
-        $em = $doctrine->getManager();
-        
-        $cat1 = new \AppBundle\Entity\Categorie("Tutorial");
-        $cat2 = new \AppBundle\Entity\Categorie("Funny");
-        
-        $article->addCategory($cat1);
-        $article->addCategory($cat2);
-        
-        
-      //Ecriture en base des objets categories
-        $em->persist($cat1);
-        $em->persist($cat2);        
-        try {
-            $em->flush();
-        }
-        catch (\PDOException $e){
-        }      
-
-      //Ecriture en base d'un objet  article
-        $em->persist($article);
-        try {
-            $em->flush();
-        }
-        catch (\PDOException $e){
-        }      
-
-        $comm1 = new \AppBundle\Entity\Comment($article);
-        $comm1->setContenu("Ceci est un commentaire 1");
-        $comm1->setAuteur("FRANCOIS François");   
- 
-        $comm2 = new \AppBundle\Entity\Comment($article);
-        $comm2->setContenu("Ceci est un commentaire 2");
-        $comm2->setAuteur("MARC François");
- 
-        $em->persist($comm1);
-        $em->persist($comm2);
-        
-        try {
-            $em->flush();
-        }
-        
-        catch (\PDOException $e){
-
-        }      
- 
         return $this->render('blog/add.html.twig', [
-                'article' => $article,
+                'form' => $form->createView(),
                 ]);
         
     }
@@ -217,11 +239,12 @@ Très peu de modificatinge pas une form tables ci-dessous... ....</strong>");
         $repA = $em->getRepository('AppBundle:Article');
         
         return $this->render('blog/categorie.html.twig', [
-            'titre' => $categorie->getTitre(), 'articles' => $repA->getArticlesByCategorie($categorie)
+            'titre' => $categorie->getTitre(), 'articles' => $repA->getArticlesByCategorie($categorie), 'count' =>$repA->getCountArticlesByCategorie($categorie)
         ]);
 //        return $this->render('blog/categorie.html.twig', [
 //            'titre' => $categorie->getTitre(), 'articles' => $categorie->getArticles()
 //        ]);
         
     }
+ 
 }

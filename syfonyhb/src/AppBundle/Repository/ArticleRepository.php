@@ -40,12 +40,7 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
     }
     
     public function getArticlesByCategorie($categorie) {
-        //$qb= $this->createQueryBuilder("a");
-        
-        //equivalent a
-        //$qb=$this->_em->createQueryBuilder()->select("a")->from("$this->_entityName"AppBundle:Article", "a"); //
-        //equivalent a
-        //$qb=$this->_em->createQueryBuilder()->select("a")->from($this->_entityName, "a"); //
+
         $pub = 1;
         
         $qb= $this->createQueryBuilder("a")
@@ -62,6 +57,24 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
         $query = $qb->getQuery();
         
         return $query->getResult();
+        //return $query->getArrayResult();
+                
+    }
+    
+    public function getCountArticlesByCategorie($categorie) {
+
+        $pub = 1;
+        
+        $qb= $this->createQueryBuilder("a")
+             ->leftJoin("a.categories", "c")
+             ->select("COUNT(a)")
+             ->where("a.publication = :pub")           
+             ->andWhere(" c = :cat")
+             ->setParameter("pub", $pub)
+             ->setParameter("cat", $categorie)
+             ->orderBy("a.date","DESC");
+        
+        return $qb->getQuery()->getSingleScalarResult();
         //return $query->getArrayResult();
                 
     }
