@@ -106,14 +106,54 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  'page' => 1,  '_controller' => 'AppBundle\\Controller\\BlogController::indexAction',  '_route' => 'blog_index',);
             }
 
-            // blog_detail
-            if (0 === strpos($pathinfo, '/blog/detail') && preg_match('#^/blog/detail/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog_detail')), array (  '_controller' => 'AppBundle\\Controller\\BlogController::detailAction',));
+            if (0 === strpos($pathinfo, '/blog/detail')) {
+                // blog_detail
+                if (preg_match('#^/blog/detail/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_blog_detail;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog_detail')), array (  '_controller' => 'AppBundle\\Controller\\BlogController::detailAction',));
+                }
+                not_blog_detail:
+
+                // blog_detail_post
+                if (preg_match('#^/blog/detail/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_blog_detail_post;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog_detail_post')), array (  '_controller' => 'AppBundle\\Controller\\BlogController::detailPostAction',));
+                }
+                not_blog_detail_post:
+
             }
 
-            // blog_modify
-            if (0 === strpos($pathinfo, '/blog/modify') && preg_match('#^/blog/modify(?:/(?P<id>\\d+))?$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog_modify')), array (  'id' => 1,  '_controller' => 'AppBundle\\Controller\\BlogController::modifyAction',));
+            if (0 === strpos($pathinfo, '/blog/modify')) {
+                // blog_modify
+                if (preg_match('#^/blog/modify(?:/(?P<id>\\d+))?$#s', $pathinfo, $matches)) {
+                    if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                        $allow = array_merge($allow, array('GET', 'HEAD'));
+                        goto not_blog_modify;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog_modify')), array (  'id' => 1,  '_controller' => 'AppBundle\\Controller\\BlogController::modifyAction',));
+                }
+                not_blog_modify:
+
+                // blog_modify_Post
+                if (preg_match('#^/blog/modify(?:/(?P<id>\\d+))?$#s', $pathinfo, $matches)) {
+                    if ($this->context->getMethod() != 'POST') {
+                        $allow[] = 'POST';
+                        goto not_blog_modify_Post;
+                    }
+
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog_modify_Post')), array (  'id' => 1,  '_controller' => 'AppBundle\\Controller\\BlogController::modifyPostAction',));
+                }
+                not_blog_modify_Post:
+
             }
 
             // blog_delete

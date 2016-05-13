@@ -5,15 +5,11 @@
         <group>
             <file>file:/C:/xampp/htdocs/syfonyhb/app/Resources/views/blog/add.html.twig</file>
             <file>file:/C:/xampp/htdocs/syfonyhb/src/AppBundle/Controller/BlogController.php</file>
-            <file>file:/C:/xampp/htdocs/syfonyhb/app/Resources/views/blog/detail.html.twig</file>
-            <file>file:/C:/xampp/htdocs/syfonyhb/app/Resources/views/blog/modify.html.twig</file>
-            <file>file:/C:/xampp/htdocs/syfonyhb/app/Resources/views/blog/delete.html.twig</file>
-            <file>file:/C:/xampp/htdocs/syfonyhb/app/Resources/views/blog/footer.html.twig</file>
-            <file>file:/C:/xampp/htdocs/syfonyhb/app/Resources/views/base.html.twig</file>
-            <file>file:/C:/xampp/htdocs/syfonyhb/app/config/parameters.yml</file>
-            <file>file:/C:/xampp/htdocs/syfonyhb/bin/console</file>
-            <file>file:/C:/xampp/htdocs/syfonyhb/app/Resources/views/blog/index.html.twig</file>
+            <file>file:/C:/xampp/htdocs/syfonyhb/app/Resources/views/blog/categorie.html.twig</file>
+            <file>file:/C:/xampp/htdocs/syfonyhb/src/AppBundle/Form/ArticleType.php</file>
+            <file>file:/C:/xampp/htdocs/syfonyhb/src/AppBundle/Entity/Article.php</file>
             <file>file:/C:/xampp/htdocs/syfonyhb/app/Resources/views/blog/form.html.twig</file>
+            <file>file:/C:/xampp/htdocs/syfonyhb/src/AppBundle/Form/ImageType.php</file>
         </group>
     </open-files>
 </project-private>

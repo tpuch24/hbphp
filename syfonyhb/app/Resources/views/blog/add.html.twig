@@ -3,6 +3,12 @@
 {% block title %} {{parent()}} - Ajout {% endblock %}
 
 {% block body %}
+    {% for message in app.session.flashbag.get('erreur') %}
+        <p class="alert alert-danger"> {{ message }}</p>
+    {% endfor %}
     <h2>Ajout d'article</h2>
     {% include "blog/form.html.twig" %}
+{% endblock %}
+{% block javascripts %}
+<script src="//cdn.ckeditor.com/4.5.9/standard/ckeditor.js"></script>
 {% endblock %}

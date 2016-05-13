@@ -3,8 +3,11 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Article;
+use AppBundle\Entity\Comment;
 use AppBundle\Form\ArticleType;
+use AppBundle\Form\CommentType;
 use PDOException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +18,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class BlogController extends Controller
 {
-
     const PAGINATION_IND = 5; 
     const PAGINATION_CAT = 2; 
 
@@ -43,6 +45,7 @@ class BlogController extends Controller
     
     /**
      * @Route("/detail/{id}", name="blog_detail")
+     * @Method("GET")
      */
     public function detailAction(Request $request, $id)
     {
@@ -58,8 +61,69 @@ class BlogController extends Controller
         
         $comments = $repC->findByArticle($article, ["date" => "DESC"] );
                 
+        $commentavenir = new Comment($article);
+        
+        $form= $this->createForm(CommentType::class, $commentavenir);
+        
+        $session = $this->get('session');
+        
+        
         return $this->render('blog/detail.html.twig', [
             'article' => $article, 'comments' => $comments,
+            'form' => $form->createView(),
+        ]);
+        
+    }
+    
+    
+    /**
+     * @Route("/detail/{id}", name="blog_detail_post")
+     * @Method("POST")
+     */
+    public function detailPostAction(Request $request, $id)
+    {
+        $repA = $this->getDoctrine()->getManager()->getRepository('AppBundle:Article');
+        
+        $article = $repA->find($id);
+        
+//        $repC = $this->getDoctrine()->getManager()->getRepository('AppBundle:Comment');
+//        
+//        $comments = $repC->findByArticle($article, ["date" => "DESC"] );
+                
+        $commentavenir = new Comment($article);
+        
+        $form= $this->createForm(CommentType::class, $commentavenir);
+        
+        $session = $this->get('session');
+        
+        if ($request->getMethod() == 'POST'){
+            $form->handleRequest($request);
+            
+            if ($form->isSubmitted() && $form->isvalid()){
+                //$article->setOwner();
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($commentavenir);
+              //$article->setImage($image);     
+
+                try {
+                    $em->flush();
+                    
+                    $session->getFlashBag()->add('info', 'Commentaire enregistré');
+
+                    return $this->redirectToRoute('blog_detail',['id' => $id]);
+                    
+                } catch (\Exception $ex) {
+                    $session->getFlashBag()->add('erreur', ' a refaire: '.$ex->getMessage());
+                    return $this->redirectToRoute('blog_detail',['id' => $id]);
+                }
+            }
+        }
+        
+        
+        
+        return $this->render('blog/detail.html.twig', [
+            'article' => $article, 'comments' => $comments,
+            'form' => $form->createView(),
         ]);
         
     }
@@ -67,31 +131,89 @@ class BlogController extends Controller
     /**
      * @Route("/modify/{id}", name="blog_modify",
      * defaults={"id":1}, requirements={"id":"\d+"})
+     * @Method("GET")
      */
     public function modifyAction(Request $request, $id)
     {
         $doctrine = $this->getDoctrine();
         $em = $doctrine->getManager();
         $repA = $em->getRepository('AppBundle:Article');
-        
-        
+
         //Lecture article
-          $article = $repA->find($id);
-          $article->setTitre("Update - ".$article->getTitre());
-        //Update en base d'un objet
-        try {
-            $em->flush();
-        }
-        catch (PDOException $e){
-     
-         }
+        $article = $repA->find($id);
+        
+        $form= $this->createForm(ArticleType::class, $article);
+        
+        $session = $this->get('session');
+        
+//        if ($request->getMethod() == 'POST'){
+//            $form->handleRequest($request);
+//            
+//            if ($form->isSubmitted() && $form->isvalid()){
+//                //$article->setOwner();
+//                $em = $this->getDoctrine()->getManager();
+//                $em->persist($article);
+//
+//                try {
+//                    $em->flush();
+//                    return $this->redirectToRoute('blog_detail',['id' => $id]);
+//                    
+//                } catch (\Exception $ex) {
+//                    return $this->redirectToRoute('blog_modify',['id' => $id]);
+//                }
+//            }
+//       }
 
         return $this->render('blog/modify.html.twig', [
-            'id' => $id,
+                'id' => $id,
+                'form' => $form->createView(),
         ]);
         
     }
     
+    /**
+     * @Route("/modify/{id}", name="blog_modify_Post",
+     * defaults={"id":1}, requirements={"id":"\d+"})
+     * @Method ("POST")
+     */
+    public function modifyPostAction(Request $request, $id)
+    {
+        $doctrine = $this->getDoctrine();
+        $em = $doctrine->getManager();
+        $repA = $em->getRepository('AppBundle:Article');
+
+        //Lecture article
+        $article = $repA->find($id);
+        $form= $this->createForm(ArticleType::class, $article);
+        $session = $this->get('session');
+        
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isvalid()){
+            //$article->setOwner();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($article);
+
+          //$article->setImage($image);     
+
+            try {
+                $em->flush();
+                $session->getFlashBag()->add('info', 'Article modifié');
+
+                return $this->redirectToRoute('blog_detail',['id' => $id]);
+
+            } catch (\Exception $ex) {
+                $session->getFlashBag()->add('erreur modification', ' a refaire: '.$ex->getMessage());
+                return $this->redirectToRoute('blog_modify',['id' => $id]);
+            }
+       }
+
+        return $this->render('blog/modify.html.twig', [
+                'id' => $id,
+                'form' => $form->createView(),
+        ]);
+        
+    }
     /**
      * @Route("/delete/{id}", name="blog_delete",
      * defaults={"id":1}, requirements={"id":"\d+"})
@@ -223,21 +345,21 @@ class BlogController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($article);
                 
-                //Ajout image - ancien
-                 
-//                $image = new \AppBundle\Entity\Image();
-//                $image ->setAlt("une image");
-//                $image ->setUrl('https://robohash.org/'. md5(uniqid()));
-//
-//                $article->setImage($image);     
+              //$article->setImage($image);     
 
                 try {
                     $em->flush();
+                    
+                    $session->getFlashBag()->add('info', 'Article enregistré');
+                    $session->getFlashBag()->add('info', ' avec succés');
+
                     return $this->redirectToRoute('blog_detail');
                     
-                } catch (Exception $ex) {
-
+                } catch (\Exception $ex) {
+                    $session->getFlashBag()->add('erreur', ' a refaire: '.$ex->getMessage());
+                    return $this->redirectToRoute('blog_add');
                 }
+                
             }
         }
         

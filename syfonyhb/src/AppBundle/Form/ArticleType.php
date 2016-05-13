@@ -23,7 +23,6 @@ class ArticleType extends AbstractType
         ->add("date", Type\DateType::class)
         ->add("publication", Type\CheckboxType::class,
                 ['required' => false])
-        
 //        ->add('date_modification', Type\DateType::class)
         ->add('image', ImageType::class,
                 ['required' => false])
@@ -35,7 +34,6 @@ class ArticleType extends AbstractType
                 'multiple' => true,
                 'query_builder' => function($er){
                     return $er->createQueryBuilder("c")->orderBy("c.titre","ASC");
-                    
                 }
                 ])
 

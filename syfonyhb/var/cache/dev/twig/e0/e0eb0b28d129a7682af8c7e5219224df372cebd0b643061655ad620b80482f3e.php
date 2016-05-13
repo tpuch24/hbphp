@@ -22,34 +22,34 @@ class __TwigTemplate_ed32265669c13a6c495efa25b1f68fa65115a6a76e62cc3c3d7b55df8a5
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_e06b03fb276793475a43fc11d059f8b331fe02565e9c828e49e3a5428ebfb60d = $this->env->getExtension("native_profiler");
-        $__internal_e06b03fb276793475a43fc11d059f8b331fe02565e9c828e49e3a5428ebfb60d->enter($__internal_e06b03fb276793475a43fc11d059f8b331fe02565e9c828e49e3a5428ebfb60d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "blog/index.html.twig"));
+        $__internal_6eef750955752f2c1fe508b0686f0a03dcd8b9d1c0d3904308dd3f1419df03ce = $this->env->getExtension("native_profiler");
+        $__internal_6eef750955752f2c1fe508b0686f0a03dcd8b9d1c0d3904308dd3f1419df03ce->enter($__internal_6eef750955752f2c1fe508b0686f0a03dcd8b9d1c0d3904308dd3f1419df03ce_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "blog/index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_e06b03fb276793475a43fc11d059f8b331fe02565e9c828e49e3a5428ebfb60d->leave($__internal_e06b03fb276793475a43fc11d059f8b331fe02565e9c828e49e3a5428ebfb60d_prof);
+        $__internal_6eef750955752f2c1fe508b0686f0a03dcd8b9d1c0d3904308dd3f1419df03ce->leave($__internal_6eef750955752f2c1fe508b0686f0a03dcd8b9d1c0d3904308dd3f1419df03ce_prof);
 
     }
 
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        $__internal_e6c58dc2951d36e603d732bf4288d4d005d2f921a1d42f17a65f767376c02687 = $this->env->getExtension("native_profiler");
-        $__internal_e6c58dc2951d36e603d732bf4288d4d005d2f921a1d42f17a65f767376c02687->enter($__internal_e6c58dc2951d36e603d732bf4288d4d005d2f921a1d42f17a65f767376c02687_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_a18283a7cbf6cef02777797a11cd2df17093ad8bb36de997d944a3f798dec31f = $this->env->getExtension("native_profiler");
+        $__internal_a18283a7cbf6cef02777797a11cd2df17093ad8bb36de997d944a3f798dec31f->enter($__internal_a18283a7cbf6cef02777797a11cd2df17093ad8bb36de997d944a3f798dec31f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo " ";
         $this->displayParentBlock("title", $context, $blocks);
         echo " - Index ";
         
-        $__internal_e6c58dc2951d36e603d732bf4288d4d005d2f921a1d42f17a65f767376c02687->leave($__internal_e6c58dc2951d36e603d732bf4288d4d005d2f921a1d42f17a65f767376c02687_prof);
+        $__internal_a18283a7cbf6cef02777797a11cd2df17093ad8bb36de997d944a3f798dec31f->leave($__internal_a18283a7cbf6cef02777797a11cd2df17093ad8bb36de997d944a3f798dec31f_prof);
 
     }
 
     // line 6
     public function block_body($context, array $blocks = array())
     {
-        $__internal_a6ae3197829fa4f071d4953586c3a426363838589e98dae46b2994fde078a443 = $this->env->getExtension("native_profiler");
-        $__internal_a6ae3197829fa4f071d4953586c3a426363838589e98dae46b2994fde078a443->enter($__internal_a6ae3197829fa4f071d4953586c3a426363838589e98dae46b2994fde078a443_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_76646e4a0259bca741f2fbe9d10e2ebd8ebf01a093c79aa04331c5dd45dc51df = $this->env->getExtension("native_profiler");
+        $__internal_76646e4a0259bca741f2fbe9d10e2ebd8ebf01a093c79aa04331c5dd45dc51df->enter($__internal_76646e4a0259bca741f2fbe9d10e2ebd8ebf01a093c79aa04331c5dd45dc51df_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 7
         echo "<h1>
@@ -72,8 +72,10 @@ class __TwigTemplate_ed32265669c13a6c495efa25b1f68fa65115a6a76e62cc3c3d7b55df8a5
         ";
             // line 12
             if ($this->getAttribute($context["article"], "image", array())) {
+                echo "  
+            <img src=\"";
                 // line 13
-                echo "           <img src=\"";
+                echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/"), "html", null, true);
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["article"], "image", array()), "url", array()), "html", null, true);
                 echo "\" alt=\"";
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["article"], "image", array()), "alt", array()), "html", null, true);
@@ -112,7 +114,7 @@ class __TwigTemplate_ed32265669c13a6c495efa25b1f68fa65115a6a76e62cc3c3d7b55df8a5
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['article'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         
-        $__internal_a6ae3197829fa4f071d4953586c3a426363838589e98dae46b2994fde078a443->leave($__internal_a6ae3197829fa4f071d4953586c3a426363838589e98dae46b2994fde078a443_prof);
+        $__internal_76646e4a0259bca741f2fbe9d10e2ebd8ebf01a093c79aa04331c5dd45dc51df->leave($__internal_76646e4a0259bca741f2fbe9d10e2ebd8ebf01a093c79aa04331c5dd45dc51df_prof);
 
     }
 
@@ -128,7 +130,7 @@ class __TwigTemplate_ed32265669c13a6c495efa25b1f68fa65115a6a76e62cc3c3d7b55df8a5
 
     public function getDebugInfo()
     {
-        return array (  106 => 20,  102 => 18,  91 => 17,  87 => 16,  84 => 15,  76 => 13,  74 => 12,  67 => 11,  63 => 10,  58 => 8,  55 => 7,  49 => 6,  35 => 4,  11 => 2,);
+        return array (  108 => 20,  104 => 18,  93 => 17,  89 => 16,  86 => 15,  78 => 13,  74 => 12,  67 => 11,  63 => 10,  58 => 8,  55 => 7,  49 => 6,  35 => 4,  11 => 2,);
     }
 }
 /* {# empty Twig template #}*/
@@ -142,8 +144,8 @@ class __TwigTemplate_ed32265669c13a6c495efa25b1f68fa65115a6a76e62cc3c3d7b55df8a5
 /* </h1>*/
 /*     {% for article in articles %}*/
 /*     <p>{{article.id}} - <em>{{article.titre}}</em>*/
-/*         {% if article.image %}*/
-/*            <img src="{{article.image.url}}" alt="{{article.image.alt}}" width="10%" height="10%" ><br>*/
+/*         {% if article.image %}  */
+/*             <img src="{{asset ('images/')}}{{article.image.url}}" alt="{{article.image.alt}}" width="10%" height="10%" ><br>*/
 /*         {% endif %}*/
 /*         <br>  */
 /*         {% for categorie in article.categories  %}*/

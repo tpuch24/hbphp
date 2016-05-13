@@ -22,20 +22,20 @@ class __TwigTemplate_58a3c195059cf23c1b2feab76d0e1d7fb650cdbad904d297e41c2bd4a8b
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_0cf12ed6bc0566ca38a0f050db48f68731c03bb4943c4b781dd418b3c16bcff1 = $this->env->getExtension("native_profiler");
-        $__internal_0cf12ed6bc0566ca38a0f050db48f68731c03bb4943c4b781dd418b3c16bcff1->enter($__internal_0cf12ed6bc0566ca38a0f050db48f68731c03bb4943c4b781dd418b3c16bcff1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "blog/detail.html.twig"));
+        $__internal_f2112abb261628df149c35feb5c2bbb0a8c6154d6373b61a7e408336fd0f8401 = $this->env->getExtension("native_profiler");
+        $__internal_f2112abb261628df149c35feb5c2bbb0a8c6154d6373b61a7e408336fd0f8401->enter($__internal_f2112abb261628df149c35feb5c2bbb0a8c6154d6373b61a7e408336fd0f8401_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "blog/detail.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_0cf12ed6bc0566ca38a0f050db48f68731c03bb4943c4b781dd418b3c16bcff1->leave($__internal_0cf12ed6bc0566ca38a0f050db48f68731c03bb4943c4b781dd418b3c16bcff1_prof);
+        $__internal_f2112abb261628df149c35feb5c2bbb0a8c6154d6373b61a7e408336fd0f8401->leave($__internal_f2112abb261628df149c35feb5c2bbb0a8c6154d6373b61a7e408336fd0f8401_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_08867d17ea9985e65d36440c61d4130210244a081ce4a87b1d36d23944dd1e00 = $this->env->getExtension("native_profiler");
-        $__internal_08867d17ea9985e65d36440c61d4130210244a081ce4a87b1d36d23944dd1e00->enter($__internal_08867d17ea9985e65d36440c61d4130210244a081ce4a87b1d36d23944dd1e00_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_a5ebb29b7f59d3ea3e40f9a912b65f1de5da23e97df98e8d85225f3fd56ec868 = $this->env->getExtension("native_profiler");
+        $__internal_a5ebb29b7f59d3ea3e40f9a912b65f1de5da23e97df98e8d85225f3fd56ec868->enter($__internal_a5ebb29b7f59d3ea3e40f9a912b65f1de5da23e97df98e8d85225f3fd56ec868_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo " ";
         $this->displayParentBlock("title", $context, $blocks);
@@ -43,43 +43,61 @@ class __TwigTemplate_58a3c195059cf23c1b2feab76d0e1d7fb650cdbad904d297e41c2bd4a8b
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "titre", array()), "html", null, true);
         echo " ";
         
-        $__internal_08867d17ea9985e65d36440c61d4130210244a081ce4a87b1d36d23944dd1e00->leave($__internal_08867d17ea9985e65d36440c61d4130210244a081ce4a87b1d36d23944dd1e00_prof);
+        $__internal_a5ebb29b7f59d3ea3e40f9a912b65f1de5da23e97df98e8d85225f3fd56ec868->leave($__internal_a5ebb29b7f59d3ea3e40f9a912b65f1de5da23e97df98e8d85225f3fd56ec868_prof);
 
     }
 
     // line 5
     public function block_body($context, array $blocks = array())
     {
-        $__internal_d2e18ef36fa9e24e1d3f933e0693d9bb317c2bcb2eda0db719555faeaedb3cb8 = $this->env->getExtension("native_profiler");
-        $__internal_d2e18ef36fa9e24e1d3f933e0693d9bb317c2bcb2eda0db719555faeaedb3cb8->enter($__internal_d2e18ef36fa9e24e1d3f933e0693d9bb317c2bcb2eda0db719555faeaedb3cb8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_bff7af30cd25182414e0ce4f5b7e82b919e97971efe8c2a8da0d885a2ed4343f = $this->env->getExtension("native_profiler");
+        $__internal_bff7af30cd25182414e0ce4f5b7e82b919e97971efe8c2a8da0d885a2ed4343f->enter($__internal_bff7af30cd25182414e0ce4f5b7e82b919e97971efe8c2a8da0d885a2ed4343f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
         echo "    ";
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "flashbag", array()), "get", array(0 => "info"), "method"));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 7
+            echo "        <p class=\"alert alert-success\"> ";
+            echo twig_escape_filter($this->env, $context["message"], "html", null, true);
+            echo "</p>
+    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 9
+        echo "
+    ";
+        // line 10
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "id", array()), "html", null, true);
         echo "<br>
     <p>";
-        // line 7
+        // line 11
         echo $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "contenu", array());
         echo "<br>
         ";
-        // line 8
+        // line 12
         if ($this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "image", array())) {
-            // line 9
-            echo "           <img src=\"";
+            echo "  
+            <img src=\"";
+            // line 13
+            echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("images/"), "html", null, true);
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "image", array()), "url", array()), "html", null, true);
             echo "\" alt=\"";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "image", array()), "alt", array()), "html", null, true);
-            echo "\" ><br>
+            echo "\" width=\"10%\" height=\"10%\" ><br>
         ";
         }
-        // line 11
+        // line 15
         echo "    <hr>
         ";
-        // line 12
+        // line 16
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["comments"]) ? $context["comments"] : $this->getContext($context, "comments")));
         foreach ($context['_seq'] as $context["_key"] => $context["comment"]) {
-            // line 13
+            // line 17
             echo "            ";
             echo twig_escape_filter($this->env, $this->getAttribute($context["comment"], "getContenu", array(), "method"), "html", null, true);
             echo " ecrit par ";
@@ -93,24 +111,27 @@ class __TwigTemplate_58a3c195059cf23c1b2feab76d0e1d7fb650cdbad904d297e41c2bd4a8b
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['comment'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 16
+        // line 20
         echo "        <em>";
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "date", array()), "d-m-yy"), "html", null, true);
         echo "</em>
 
-        <a class=\"btn btn-warning\" href=\"";
-        // line 18
+        ";
+        // line 22
+        $this->loadTemplate("blog/formcomment.html.twig", "blog/detail.html.twig", 22)->display($context);
+        // line 23
+        echo "        <a class=\"btn btn-warning\" href=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("blog_modify", array("id" => $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "id", array()))), "html", null, true);
         echo "\">Modifier &rarr;</a>
         <a class=\"btn btn-warning\" href=\"";
-        // line 19
+        // line 24
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("blog_delete", array("id" => $this->getAttribute((isset($context["article"]) ? $context["article"] : $this->getContext($context, "article")), "id", array()))), "html", null, true);
         echo "\">Supprimer &rarr;</a>
     
     <p>
 ";
         
-        $__internal_d2e18ef36fa9e24e1d3f933e0693d9bb317c2bcb2eda0db719555faeaedb3cb8->leave($__internal_d2e18ef36fa9e24e1d3f933e0693d9bb317c2bcb2eda0db719555faeaedb3cb8_prof);
+        $__internal_bff7af30cd25182414e0ce4f5b7e82b919e97971efe8c2a8da0d885a2ed4343f->leave($__internal_bff7af30cd25182414e0ce4f5b7e82b919e97971efe8c2a8da0d885a2ed4343f_prof);
 
     }
 
@@ -126,7 +147,7 @@ class __TwigTemplate_58a3c195059cf23c1b2feab76d0e1d7fb650cdbad904d297e41c2bd4a8b
 
     public function getDebugInfo()
     {
-        return array (  107 => 19,  103 => 18,  97 => 16,  83 => 13,  79 => 12,  76 => 11,  68 => 9,  66 => 8,  62 => 7,  57 => 6,  51 => 5,  35 => 3,  11 => 1,);
+        return array (  128 => 24,  123 => 23,  121 => 22,  115 => 20,  101 => 17,  97 => 16,  94 => 15,  86 => 13,  82 => 12,  78 => 11,  74 => 10,  71 => 9,  62 => 7,  57 => 6,  51 => 5,  35 => 3,  11 => 1,);
     }
 }
 /* {% extends "blog/layout.html.twig" %}*/
@@ -134,10 +155,14 @@ class __TwigTemplate_58a3c195059cf23c1b2feab76d0e1d7fb650cdbad904d297e41c2bd4a8b
 /* {% block title %} {{parent()}} - Edit - {{article.titre}} {% endblock %}*/
 /* */
 /* {% block body %}*/
+/*     {% for message in app.session.flashbag.get('info') %}*/
+/*         <p class="alert alert-success"> {{ message }}</p>*/
+/*     {% endfor %}*/
+/* */
 /*     {{article.id}}<br>*/
 /*     <p>{{article.contenu | raw}}<br>*/
-/*         {% if article.image %}*/
-/*            <img src="{{article.image.url}}" alt="{{article.image.alt}}" ><br>*/
+/*         {% if article.image %}  */
+/*             <img src="{{asset ('images/')}}{{article.image.url}}" alt="{{article.image.alt}}" width="10%" height="10%" ><br>*/
 /*         {% endif %}*/
 /*     <hr>*/
 /*         {% for comment in comments  %}*/
@@ -146,9 +171,11 @@ class __TwigTemplate_58a3c195059cf23c1b2feab76d0e1d7fb650cdbad904d297e41c2bd4a8b
 /*         {% endfor %}*/
 /*         <em>{{article.date|date("d-m-yy")}}</em>*/
 /* */
+/*         {% include "blog/formcomment.html.twig" %}*/
 /*         <a class="btn btn-warning" href="{{path('blog_modify', {id:article.id})}}">Modifier &rarr;</a>*/
 /*         <a class="btn btn-warning" href="{{path('blog_delete', {id:article.id})}}">Supprimer &rarr;</a>*/
 /*     */
 /*     <p>*/
-/* {% endblock %}*/
+/* {% endblock body%}*/
+/* */
 /* */

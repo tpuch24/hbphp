@@ -9,8 +9,8 @@
 </h1>
     {% for article in articles %}
     <p>{{article.id}} - <em>{{article.titre}}</em>
-        {% if article.image %}
-           <img src="{{article.image.url}}" alt="{{article.image.alt}}" width="10%" height="10%" ><br>
+        {% if article.image %}  
+            <img src="{{asset ('images/')}}{{article.image.url}}" alt="{{article.image.alt}}" width="10%" height="10%" ><br>
         {% endif %}
         <br>  
         {% for categorie in article.categories  %}
