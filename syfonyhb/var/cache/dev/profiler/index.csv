@@ -1098,3 +1098,11 @@ b84e71,::1,GET,http://localhost/syfonyhb/web/app_dev.php/dist/js/bootstrap.min.j
 86849e,::1,GET,http://localhost/syfonyhb/web/app_dev.php/blog/detail/25,1463147253,,200
 4c7f38,::1,GET,http://localhost/syfonyhb/web/app_dev.php/dist/js/bootstrap.min.js,1463147254,b6c848,200
 b6c848,::1,GET,http://localhost/syfonyhb/web/app_dev.php/dist/js/bootstrap.min.js,1463147254,,404
+ca8d75,127.0.0.1,GET,http://localhost/syfonyhb/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DAppBundle%253ABlog%253AFooter,1463150273,eb0d5c,200
+eb0d5c,::1,GET,http://localhost/syfonyhb/web/app_dev.php/blog/index,1463150273,,200
+6a958c,127.0.0.1,GET,http://localhost/syfonyhb/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DAppBundle%253ABlog%253AFooter,1463151068,9e5907,200
+9e5907,::1,GET,http://localhost/syfonyhb/web/app_dev.php/blog/add,1463151068,,200
+41b39c,127.0.0.1,GET,http://localhost/syfonyhb/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DAppBundle%253ABlog%253AFooter,1463151140,e3b200,200
+e3b200,::1,GET,http://localhost/syfonyhb/web/app_dev.php/blog/add,1463151140,,200
+4f3eb8,127.0.0.1,GET,http://localhost/syfonyhb/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DAppBundle%253ABlog%253AFooter,1463151162,87b81a,200
+87b81a,::1,POST,http://localhost/syfonyhb/web/app_dev.php/blog/add,1463151162,,200

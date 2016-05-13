@@ -118,9 +118,7 @@ class BlogController extends Controller
                 }
             }
         }
-        
-        
-        
+
         return $this->render('blog/detail.html.twig', [
             'article' => $article, 'comments' => $comments,
             'form' => $form->createView(),

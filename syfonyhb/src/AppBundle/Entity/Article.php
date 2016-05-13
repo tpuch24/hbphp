@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Article
@@ -26,12 +28,18 @@ class Article
      * @var string
      *
      * @ORM\Column(name="titre", type="string", length=255)
+     * * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Le titre doit faire au min {{ limit }} carracteres",
+     *      maxMessage = "Le titre doit faire au max {{ limit }} carracteres"
+     * 
      */
     private $titre;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message = "Contenu Vide")
      * @ORM\Column(name="contenu", type="text")
      */
     private $contenu;
@@ -59,7 +67,7 @@ class Article
     
     /**
      * @var Image()
-     *
+     * @Assert\valid()
      * @ORM\OneToOne(targetEntity="Image", cascade = {"persist", "remove"})
      */
     private $image;
