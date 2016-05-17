@@ -18,27 +18,34 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class BlogController extends Controller
 {
-    const PAGINATION_IND = 5; 
-    const PAGINATION_CAT = 2; 
+    
 
     /**
-     * @Route("/index", name="blog_index",
+     * @Route("/index/{page}", name="blog_index",
      * defaults={"page":1}, requirements={"page":"\d+"}
      * )
      */
     public function indexAction(Request $request, $page)
     {
+        $pagination_ind = 3; 
+        $pagination_cat = 5; 
+    
         $doctrine = $this->getDoctrine();
         $em = $doctrine->getManager();
         $repA = $em->getRepository('AppBundle:Article');
         
         //Lecture article
-          //$articles = $repA->findAll();
+        //$articles = $repA->findAll();
           
-        $articles = $repA->getArticlesIndex();
-          
+        $articles = $repA->getArticlesIndex($page, $pagination_ind);
+        
+        $c = count($articles);
+//        foreach ($paginator as $post) {
+//            echo $post->getHeadline() . "\n";
+//        }
+         $nbpages= ceil($c / $pagination_ind);
         return $this->render('blog/index.html.twig', [
-            'page' => $page, 'articles' => $articles
+            'page' => $page, 'articles' => $articles, 'nbpages'=> $nbpages
         ]);
         
     }

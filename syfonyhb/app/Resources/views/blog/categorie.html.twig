@@ -5,12 +5,13 @@
 
 {% block body %}
 <h1>
-    Catégorie : {{titre}} -{{count}} Article(s) - Page {{page}}
+    Catégorie : {{titre}}-{{count}} Article(s) {#- Page {{page}}#}
 </h1>
     {% for article in articles %}
     <p>{{article.id}} - <em>{{article.titre}}</em>
         {% if article.image %}
-           <img src="{{article.image.url}}" alt="{{article.image.alt}}" width="10%" height="10%" ><br>
+           {#<img src="{{article.image.url}}" alt="{{article.image.alt}}" width="10%" height="10%" ><br>#}
+           <img src="{{asset ('images/')}}{{article.image.url}}" alt="{{article.image.alt}}" width="10%" height="10%" ><br>
         {% endif %}     
         {% for categorie in article.categories  %}
             <a class="btn btn-link" href="{{path('blog_categorie', {id:categorie.id})}}">{{categorie.titre}}</a>

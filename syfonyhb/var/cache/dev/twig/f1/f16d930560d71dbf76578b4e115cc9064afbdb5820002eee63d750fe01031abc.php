@@ -15,8 +15,8 @@ class __TwigTemplate_af3f977a8d8dedd89118304cd31732c974b1627fd0d7bfce0a5dff7a54b
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_6b2b65b2e0872bf0c947b5668c08e3b8121ddda462422818f60f21d54911dd0c = $this->env->getExtension("native_profiler");
-        $__internal_6b2b65b2e0872bf0c947b5668c08e3b8121ddda462422818f60f21d54911dd0c->enter($__internal_6b2b65b2e0872bf0c947b5668c08e3b8121ddda462422818f60f21d54911dd0c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "blog/form.html.twig"));
+        $__internal_84b8ab121b4443903fd83682abc9fee0e0475562912e556178256675d30af7f1 = $this->env->getExtension("native_profiler");
+        $__internal_84b8ab121b4443903fd83682abc9fee0e0475562912e556178256675d30af7f1->enter($__internal_84b8ab121b4443903fd83682abc9fee0e0475562912e556178256675d30af7f1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "blog/form.html.twig"));
 
         // line 3
         $this->env->getExtension('form')->renderer->setTheme((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), array(0 => "bootstrap_3_layout.html.twig", 1 => "blog/textarea.ckeditor.html.twig"));
@@ -53,7 +53,7 @@ class __TwigTemplate_af3f977a8d8dedd89118304cd31732c974b1627fd0d7bfce0a5dff7a54b
 
 ";
         
-        $__internal_6b2b65b2e0872bf0c947b5668c08e3b8121ddda462422818f60f21d54911dd0c->leave($__internal_6b2b65b2e0872bf0c947b5668c08e3b8121ddda462422818f60f21d54911dd0c_prof);
+        $__internal_84b8ab121b4443903fd83682abc9fee0e0475562912e556178256675d30af7f1->leave($__internal_84b8ab121b4443903fd83682abc9fee0e0475562912e556178256675d30af7f1_prof);
 
     }
 

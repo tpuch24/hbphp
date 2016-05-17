@@ -33,7 +33,7 @@ class Article
      *      max = 50,
      *      minMessage = "Le titre doit faire au min {{ limit }} carracteres",
      *      maxMessage = "Le titre doit faire au max {{ limit }} carracteres"
-     * 
+     *  )
      */
     private $titre;
 

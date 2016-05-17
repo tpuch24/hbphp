@@ -102,8 +102,8 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         if (0 === strpos($pathinfo, '/blog')) {
             // blog_index
-            if ($pathinfo === '/blog/index') {
-                return array (  'page' => 1,  '_controller' => 'AppBundle\\Controller\\BlogController::indexAction',  '_route' => 'blog_index',);
+            if (0 === strpos($pathinfo, '/blog/index') && preg_match('#^/blog/index(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog_index')), array (  'page' => 1,  '_controller' => 'AppBundle\\Controller\\BlogController::indexAction',));
             }
 
             if (0 === strpos($pathinfo, '/blog/detail')) {
@@ -170,6 +170,68 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             if (0 === strpos($pathinfo, '/blog/categorie') && preg_match('#^/blog/categorie/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog_categorie')), array (  '_controller' => 'AppBundle\\Controller\\BlogController::categorieAction',));
             }
+
+        }
+
+        if (0 === strpos($pathinfo, '/admin/categorie')) {
+            // Admin_Categorie_index
+            if (rtrim($pathinfo, '/') === '/admin/categorie') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_Admin_Categorie_index;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'Admin_Categorie_index');
+                }
+
+                return array (  '_controller' => 'AppBundle\\Controller\\CategorieController::indexAction',  '_route' => 'Admin_Categorie_index',);
+            }
+            not_Admin_Categorie_index:
+
+            // Admin_Categorie_new
+            if ($pathinfo === '/admin/categorie/new') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_Admin_Categorie_new;
+                }
+
+                return array (  '_controller' => 'AppBundle\\Controller\\CategorieController::newAction',  '_route' => 'Admin_Categorie_new',);
+            }
+            not_Admin_Categorie_new:
+
+            // Admin_Categorie_show
+            if (preg_match('#^/admin/categorie/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_Admin_Categorie_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'Admin_Categorie_show')), array (  '_controller' => 'AppBundle\\Controller\\CategorieController::showAction',));
+            }
+            not_Admin_Categorie_show:
+
+            // Admin_Categorie_edit
+            if (preg_match('#^/admin/categorie/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_Admin_Categorie_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'Admin_Categorie_edit')), array (  '_controller' => 'AppBundle\\Controller\\CategorieController::editAction',));
+            }
+            not_Admin_Categorie_edit:
+
+            // Admin_Categorie_delete
+            if (preg_match('#^/admin/categorie/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'DELETE') {
+                    $allow[] = 'DELETE';
+                    goto not_Admin_Categorie_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'Admin_Categorie_delete')), array (  '_controller' => 'AppBundle\\Controller\\CategorieController::deleteAction',));
+            }
+            not_Admin_Categorie_delete:
 
         }
 

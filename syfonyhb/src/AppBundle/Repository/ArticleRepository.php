@@ -11,14 +11,11 @@ namespace AppBundle\Repository;
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
     
-    public function getArticlesIndex() {
-        //$qb= $this->createQueryBuilder("a");
+    public function getCountArticlesIndex($page, $pas) {
         
-        //equivalent a
-        //$qb=$this->_em->createQueryBuilder()->select("a")->from("$this->_entityName"AppBundle:Article", "a"); //
-        //equivalent a
-        //$qb=$this->_em->createQueryBuilder()->select("a")->from($this->_entityName, "a"); //
-        $pub = 1;
+        $pub=1;
+        $offset = ($page-1)*$pas;
+        
         
         $qb= $this->createQueryBuilder("a")
              ->leftJoin("a.image", "i")
@@ -28,13 +25,46 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
              ->setParameter("pub", $pub)
              ->where("a.publication = :pub")         
              
-                
              ->orderBy("a.date","DESC");
         
+        $qb->setFirstResult($offset);
+        $qb->setMaxResults($pas);
         
         $query = $qb->getQuery();
         
         return $query->getResult();
+        //return $query->getArrayResult();
+                
+    }
+    
+    public function getArticlesIndex($page, $pas) {
+        //$qb= $this->createQueryBuilder("a");
+        
+        //equivalent a
+        //$qb=$this->_em->createQueryBuilder()->select("a")->from("$this->_entityName"AppBundle:Article", "a"); //
+        //equivalent a
+        //$qb=$this->_em->createQueryBuilder()->select("a")->from($this->_entityName, "a"); //
+        $pub = 1;
+        $offset = ($page-1)*$pas;
+        
+        
+        $qb= $this->createQueryBuilder("a")
+             ->leftJoin("a.image", "i")
+             ->addSelect("i")
+             ->leftJoin("a.categories", "c")
+             ->addSelect("c")
+             ->setParameter("pub", $pub)
+             ->where("a.publication = :pub")         
+             
+             ->orderBy("a.date","DESC");
+        
+        $qb->setFirstResult($offset);
+        $qb->setMaxResults($pas);
+        
+        $query = $qb->getQuery();
+        
+        return new \Doctrine\ORM\Tools\Pagination\Paginator($query);
+        //return $query->getResult();
         //return $query->getArrayResult();
                 
     }

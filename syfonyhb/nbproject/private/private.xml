@@ -5,11 +5,11 @@
         <group>
             <file>file:/C:/xampp/htdocs/syfonyhb/app/Resources/views/blog/add.html.twig</file>
             <file>file:/C:/xampp/htdocs/syfonyhb/src/AppBundle/Controller/BlogController.php</file>
-            <file>file:/C:/xampp/htdocs/syfonyhb/app/Resources/views/blog/categorie.html.twig</file>
-            <file>file:/C:/xampp/htdocs/syfonyhb/src/AppBundle/Form/ArticleType.php</file>
+            <file>file:/C:/xampp/htdocs/syfonyhb/app/Resources/views/blog/formcomment.html.twig</file>
+            <file>file:/C:/xampp/htdocs/syfonyhb/src/AppBundle/Entity/Image.php</file>
             <file>file:/C:/xampp/htdocs/syfonyhb/src/AppBundle/Entity/Article.php</file>
             <file>file:/C:/xampp/htdocs/syfonyhb/app/Resources/views/blog/form.html.twig</file>
-            <file>file:/C:/xampp/htdocs/syfonyhb/src/AppBundle/Form/ImageType.php</file>
+            <file>file:/C:/xampp/htdocs/syfonyhb/src/AppBundle/Entity/Comment.php</file>
         </group>
     </open-files>
 </project-private>
