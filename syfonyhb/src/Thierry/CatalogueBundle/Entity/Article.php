@@ -92,7 +92,7 @@ class Article
     /**
      * @var \Doctrine\Common\Collections\ArrayCollection
      *
-     * @ORM\OneTomany(targetEntity="Note", mappedBy="note", cascade={"remove"})
+     * @ORM\OneTomany(targetEntity="Note", mappedBy="article", cascade={"remove"})
      * @ORM\JoinColumn(nullable=false);
      */
     private $notes; 

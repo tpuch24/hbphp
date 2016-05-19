@@ -22,34 +22,34 @@ class __TwigTemplate_6cd36232ccdd9fbef6dad3c18b08aa379082adb57bf28f0bd146df17b4b
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_6718aa6d5b4102934dda008689c5aa4400707c0f5776d1cd7c28d9dd36e5a8c5 = $this->env->getExtension("native_profiler");
-        $__internal_6718aa6d5b4102934dda008689c5aa4400707c0f5776d1cd7c28d9dd36e5a8c5->enter($__internal_6718aa6d5b4102934dda008689c5aa4400707c0f5776d1cd7c28d9dd36e5a8c5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "ThierryCatalogueBundle:cat:index.html.twig"));
+        $__internal_c9dca36d1d1cc00fb11af3bf779b4e88d9279af4d0a85773a668108735bc8105 = $this->env->getExtension("native_profiler");
+        $__internal_c9dca36d1d1cc00fb11af3bf779b4e88d9279af4d0a85773a668108735bc8105->enter($__internal_c9dca36d1d1cc00fb11af3bf779b4e88d9279af4d0a85773a668108735bc8105_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "ThierryCatalogueBundle:cat:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_6718aa6d5b4102934dda008689c5aa4400707c0f5776d1cd7c28d9dd36e5a8c5->leave($__internal_6718aa6d5b4102934dda008689c5aa4400707c0f5776d1cd7c28d9dd36e5a8c5_prof);
+        $__internal_c9dca36d1d1cc00fb11af3bf779b4e88d9279af4d0a85773a668108735bc8105->leave($__internal_c9dca36d1d1cc00fb11af3bf779b4e88d9279af4d0a85773a668108735bc8105_prof);
 
     }
 
     // line 4
     public function block_title($context, array $blocks = array())
     {
-        $__internal_a81f9f96bbf13e7e1f6e5360664cdc89c944b73e2a41100b987744f8be797bcc = $this->env->getExtension("native_profiler");
-        $__internal_a81f9f96bbf13e7e1f6e5360664cdc89c944b73e2a41100b987744f8be797bcc->enter($__internal_a81f9f96bbf13e7e1f6e5360664cdc89c944b73e2a41100b987744f8be797bcc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_7e0d9990d9cb542bd5dfd78fad529b8da30c71bd33ccbeed4b9bb77230fa6454 = $this->env->getExtension("native_profiler");
+        $__internal_7e0d9990d9cb542bd5dfd78fad529b8da30c71bd33ccbeed4b9bb77230fa6454->enter($__internal_7e0d9990d9cb542bd5dfd78fad529b8da30c71bd33ccbeed4b9bb77230fa6454_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo " ";
         $this->displayParentBlock("title", $context, $blocks);
         echo " - Index ";
         
-        $__internal_a81f9f96bbf13e7e1f6e5360664cdc89c944b73e2a41100b987744f8be797bcc->leave($__internal_a81f9f96bbf13e7e1f6e5360664cdc89c944b73e2a41100b987744f8be797bcc_prof);
+        $__internal_7e0d9990d9cb542bd5dfd78fad529b8da30c71bd33ccbeed4b9bb77230fa6454->leave($__internal_7e0d9990d9cb542bd5dfd78fad529b8da30c71bd33ccbeed4b9bb77230fa6454_prof);
 
     }
 
     // line 6
     public function block_body($context, array $blocks = array())
     {
-        $__internal_91d9fed3f18ef25c886b6aa32ec351ffe45582563cd02b7b455b41343d233007 = $this->env->getExtension("native_profiler");
-        $__internal_91d9fed3f18ef25c886b6aa32ec351ffe45582563cd02b7b455b41343d233007->enter($__internal_91d9fed3f18ef25c886b6aa32ec351ffe45582563cd02b7b455b41343d233007_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_4a60d75241aac0d93e4a752b42c215d3584544fbaf2ee86053c0285fcd99e6ef = $this->env->getExtension("native_profiler");
+        $__internal_4a60d75241aac0d93e4a752b42c215d3584544fbaf2ee86053c0285fcd99e6ef->enter($__internal_4a60d75241aac0d93e4a752b42c215d3584544fbaf2ee86053c0285fcd99e6ef_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 7
         echo "<h2>
@@ -97,24 +97,34 @@ class __TwigTemplate_6cd36232ccdd9fbef6dad3c18b08aa379082adb57bf28f0bd146df17b4b
             // line 19
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["article"], "date", array()), "d-m-yy"), "html", null, true);
             echo "</em><br>
-            ";
-            // line 20
-            if ( !(null === $this->getAttribute($context["article"], "notes", array()))) {
-                echo "  
-                ";
-                // line 21
-                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["article"], "notes", array()), "count", array(), "method"), "html", null, true);
+
+                    ";
+            // line 21
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable($this->getAttribute($context["article"], "notes", array()));
+            foreach ($context['_seq'] as $context["_key"] => $context["note"]) {
+                // line 22
+                echo "                        ";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["note"], "getNote", array(), "method"), "html", null, true);
+                echo " ecrit par ";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["note"], "getAuteur", array(), "method"), "html", null, true);
+                echo " le ";
+                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["note"], "getDate", array(), "method"), "d-m-Y"), "html", null, true);
                 echo "
+                    <br>
                 ";
-                // line 28
-                echo "            ";
             }
-            // line 29
-            echo "            ";
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['note'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 25
+            echo "                       
+            ";
+            // line 26
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute($context["article"], "categories", array()));
             foreach ($context['_seq'] as $context["_key"] => $context["categorie"]) {
-                // line 30
+                // line 27
                 echo "                <a class=\"btn btn-link\" href=\"";
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("cat_categorie", array("id" => $this->getAttribute($context["categorie"], "id", array()))), "html", null, true);
                 echo "\">";
@@ -125,11 +135,11 @@ class __TwigTemplate_6cd36232ccdd9fbef6dad3c18b08aa379082adb57bf28f0bd146df17b4b
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['categorie'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 31
+            // line 28
             echo "      
             <br>
             <a class=\"btn btn-warning\" href=\"";
-            // line 33
+            // line 30
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("cat_detail", array("id" => $this->getAttribute($context["article"], "id", array()))), "html", null, true);
             echo "\">Voir &rarr;</a>
         <p>
@@ -139,17 +149,17 @@ class __TwigTemplate_6cd36232ccdd9fbef6dad3c18b08aa379082adb57bf28f0bd146df17b4b
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['article'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 37
+        // line 34
         echo "    </div>
     ";
-        // line 38
+        // line 35
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(range(1, (isset($context["nbpages"]) ? $context["nbpages"] : $this->getContext($context, "nbpages"))));
         foreach ($context['_seq'] as $context["_key"] => $context["ii"]) {
-            // line 39
+            // line 36
             echo "        
             <a href=\"";
-            // line 40
+            // line 37
             echo $this->env->getExtension('routing')->getPath("cat_index");
             echo twig_escape_filter($this->env, $context["ii"], "html", null, true);
             echo "\">";
@@ -162,7 +172,7 @@ class __TwigTemplate_6cd36232ccdd9fbef6dad3c18b08aa379082adb57bf28f0bd146df17b4b
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['ii'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         
-        $__internal_91d9fed3f18ef25c886b6aa32ec351ffe45582563cd02b7b455b41343d233007->leave($__internal_91d9fed3f18ef25c886b6aa32ec351ffe45582563cd02b7b455b41343d233007_prof);
+        $__internal_4a60d75241aac0d93e4a752b42c215d3584544fbaf2ee86053c0285fcd99e6ef->leave($__internal_4a60d75241aac0d93e4a752b42c215d3584544fbaf2ee86053c0285fcd99e6ef_prof);
 
     }
 
@@ -178,7 +188,7 @@ class __TwigTemplate_6cd36232ccdd9fbef6dad3c18b08aa379082adb57bf28f0bd146df17b4b
 
     public function getDebugInfo()
     {
-        return array (  153 => 40,  150 => 39,  146 => 38,  143 => 37,  133 => 33,  129 => 31,  118 => 30,  113 => 29,  110 => 28,  106 => 21,  102 => 20,  98 => 19,  95 => 18,  87 => 16,  83 => 15,  79 => 14,  73 => 13,  70 => 12,  66 => 11,  58 => 8,  55 => 7,  49 => 6,  35 => 4,  11 => 2,);
+        return array (  163 => 37,  160 => 36,  156 => 35,  153 => 34,  143 => 30,  139 => 28,  128 => 27,  124 => 26,  121 => 25,  107 => 22,  103 => 21,  98 => 19,  95 => 18,  87 => 16,  83 => 15,  79 => 14,  73 => 13,  70 => 12,  66 => 11,  58 => 8,  55 => 7,  49 => 6,  35 => 4,  11 => 2,);
     }
 }
 /* {# empty Twig template #}*/
@@ -200,15 +210,12 @@ class __TwigTemplate_6cd36232ccdd9fbef6dad3c18b08aa379082adb57bf28f0bd146df17b4b
 /*             {% endif %}*/
 /*             <br>  */
 /*             <em>{{article.date|date("d-m-yy")}}</em><br>*/
-/*             {% if article.notes is not null %}  */
-/*                 {{article.notes.count()}}*/
-/*                 {#*/
+/* */
 /*                     {% for note in article.notes  %}*/
 /*                         {{note.getNote()}} ecrit par {{note.getAuteur()}} le {{note.getDate()| date("d-m-Y")}}*/
 /*                     <br>*/
 /*                 {% endfor %}*/
-/*                 #}*/
-/*             {% endif %}*/
+/*                        */
 /*             {% for categorie in article.categories  %}*/
 /*                 <a class="btn btn-link" href="{{path('cat_categorie', {id:categorie.id})}}">{{categorie.titre}}</a>*/
 /*             {% endfor %}      */

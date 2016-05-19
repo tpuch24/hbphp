@@ -17,15 +17,12 @@
             {% endif %}
             <br>  
             <em>{{article.date|date("d-m-yy")}}</em><br>
-            {% if article.notes is not null %}  
-                {{article.notes.count()}}
-                {#
+
                     {% for note in article.notes  %}
                         {{note.getNote()}} ecrit par {{note.getAuteur()}} le {{note.getDate()| date("d-m-Y")}}
                     <br>
                 {% endfor %}
-                #}
-            {% endif %}
+                       
             {% for categorie in article.categories  %}
                 <a class="btn btn-link" href="{{path('cat_categorie', {id:categorie.id})}}">{{categorie.titre}}</a>
             {% endfor %}      

@@ -43,9 +43,9 @@ class Note
     private $date;
 
     /**
-     * @var Article()
+     * @var Article
      *
-     * @ORM\ManyToOne(targetEntity="Article" , inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity="Article" , inversedBy="notes")
      * @ORM\JoinColumn(nullable=false);
      */
     private $article;
