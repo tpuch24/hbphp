@@ -1,0 +1,35 @@
+{# empty Twig template #}
+{% extends "Thierry/CatalogueBundle/cat/layout.html.twig" %}
+
+{% block title %} {{parent()}} - Index {% endblock %}
+
+{% block body %}
+<h1>
+    Page {{page}} - 
+</h1>
+ <div class="row">
+    {% for article in articles %}
+        <div class="col-xs-6 col-sm-5 col-lg-3">
+            <p>{{article.id}} - <em>{{article.titre}}</em><br>
+            {{extrait(article.contenu) | raw}}<br>
+            {% if article.image %}  
+                <img src="{{asset ('images/')}}{{article.image.url}}" alt="{{article.image.alt}}" width="10%" height="10%" ><br>
+            {% endif %}
+            <br>  
+            {% for categorie in article.categories  %}
+                <a class="btn btn-link" href="{{path('blog_categorie', {id:categorie.id})}}">{{categorie.titre}}</a>
+            {% endfor %}      
+            <br>
+            <a class="btn btn-warning" href="{{path('blog_detail', {id:article.id})}}">Voir &rarr;</a>
+        <p>
+        </div>
+    {% endfor %}
+    </div>
+    {#
+    {% for ii in 1..nbpages %}
+        
+            <a href="{{path('cat_index')}}/{{ii}}">{{ii}}</a>
+        ,
+    {% endfor%}
+#}
+{% endblock %}

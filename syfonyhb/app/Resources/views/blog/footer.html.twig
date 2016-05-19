@@ -1,6 +1,9 @@
  <hr>   
- {% for article in articles %}
-    <p><em>{{article.date|date("d-m-yy")}} - {{article.titre}}</em>
-    <a class="btn btn-warning" href="{{path('blog_detail', {id:article.id})}}">Voir &rarr;</a>
-    <p>
-    {% endfor %}
+    <div class="container">
+       
+        {% for article in articles %}
+           <p><em>{{article.date|date("d-m-yy")}} - {{article.titre}}</em>
+           <a class="btn btn-warning" href="{{path('blog_detail', {id:article.id})}}">Voir &rarr;</a>
+           <p>
+       {% endfor %}
+    </div>

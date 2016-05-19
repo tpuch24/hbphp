@@ -3,4 +3,8 @@
 {% block layout %}
     <h1> Blog </h1>
     {% block body %}{% endblock %}
+    
+      <footer class="footer">
+                 {{render(controller("AppBundle:Blog:Footer")) }}
+      </footer>
 {% endblock %}

@@ -1,0 +1,32 @@
+{% extends "ThierryCatalogueBundle:cat:layout.html.twig" %}
+
+{% block title %} {{parent()}} - Edit - {{article.titre}} {% endblock %}
+
+{% block body %}
+    {#{% for message in app.session.flashbag.get('info') %}
+        <p class="alert alert-success"> {{ message }}</p>
+    {% endfor %}
+    #}
+    {{article.id}}<br>
+    <p>{{article.titre | raw}}<br>
+        Auteur: {{article.auteur}}<br> 
+    <p>{{article.contenu | raw}}<br>
+        Prix: {{article.prix | number_format(2,'.',' ')}} €<br> 
+        {% if article.image %}  
+            <img src="{{asset ('images/')}}{{article.image.url}}" alt="{{article.image.alt}}" ><br>
+        {% endif %}
+        <em>{{article.date|date("d-m-yy")}}</em>
+    <hr>
+        {% for note in notes  %}
+            {{note.getNote()}} ecrit par {{note.getAuteur()}} le {{note.getDate()| date("d-m-Y")}}
+            <br>
+        {% endfor %}
+        
+
+        {% include "ThierryCatalogueBundle:cat:/formnote.html.twig" %}
+        <a class="btn btn-warning" href="{{path('cat_modify', {id:article.id})}}">Modifier &rarr;</a>
+        <a class="btn btn-warning" href="{{path('cat_delete', {id:article.id})}}">Supprimer &rarr;</a>
+    
+    <p>
+{% endblock body%}
+

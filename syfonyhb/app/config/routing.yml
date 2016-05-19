@@ -1,3 +1,8 @@
+thierry_catalogue:
+    resource: "@ThierryCatalogueBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation

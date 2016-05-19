@@ -3,13 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/syfonyhb/app/Resources/views/blog/add.html.twig</file>
+            <file>file:/C:/xampp/htdocs/syfonyhb/src/Thierry/CatalogueBundle/Resources/views/cat/modify.html.twig</file>
+            <file>file:/C:/xampp/htdocs/syfonyhb/src/Thierry/CatalogueBundle/Resources/views/cat/detail.html.twig</file>
             <file>file:/C:/xampp/htdocs/syfonyhb/src/AppBundle/Controller/BlogController.php</file>
-            <file>file:/C:/xampp/htdocs/syfonyhb/app/Resources/views/blog/formcomment.html.twig</file>
-            <file>file:/C:/xampp/htdocs/syfonyhb/src/AppBundle/Entity/Image.php</file>
-            <file>file:/C:/xampp/htdocs/syfonyhb/src/AppBundle/Entity/Article.php</file>
-            <file>file:/C:/xampp/htdocs/syfonyhb/app/Resources/views/blog/form.html.twig</file>
-            <file>file:/C:/xampp/htdocs/syfonyhb/src/AppBundle/Entity/Comment.php</file>
+            <file>file:/C:/xampp/htdocs/syfonyhb/src/Thierry/CatalogueBundle/Resources/views/cat/add.html.twig</file>
+            <file>file:/C:/xampp/htdocs/syfonyhb/src/Thierry/CatalogueBundle/Form/ArticleType.php</file>
+            <file>file:/C:/xampp/htdocs/syfonyhb/src/Thierry/CatalogueBundle/Controller/CatalogueController.php</file>
+            <file>file:/C:/xampp/htdocs/syfonyhb/src/Thierry/CatalogueBundle/Entity/Article.php</file>
+            <file>file:/C:/xampp/htdocs/syfonyhb/src/Thierry/CatalogueBundle/Resources/views/cat/form.html.twig</file>
+            <file>file:/C:/xampp/htdocs/syfonyhb/src/Thierry/CatalogueBundle/Resources/views/cat/categorie.html.twig</file>
         </group>
     </open-files>
 </project-private>

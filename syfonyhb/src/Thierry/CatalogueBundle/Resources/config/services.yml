@@ -1,0 +1,4 @@
+services:
+#    thierry_catalogue.example:
+#        class: Thierry\CatalogueBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

@@ -8,7 +8,7 @@
     {% endfor %}
 
     {{article.id}}<br>
-    <p>{{article.contenu | raw}}<br>
+    <p>{{article.resume | raw}}<br>
         {% if article.image %}  
             <img src="{{asset ('images/')}}{{article.image.url}}" alt="{{article.image.alt}}" width="10%" height="10%" ><br>
         {% endif %}

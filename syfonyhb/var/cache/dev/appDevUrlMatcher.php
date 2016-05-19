@@ -100,6 +100,76 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // cat_index
+        if (preg_match('#^/(?P<page>\\d+)?$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cat_index')), array (  'page' => 1,  '_controller' => 'Thierry\\CatalogueBundle\\Controller\\CatalogueController::indexAction',));
+        }
+
+        if (0 === strpos($pathinfo, '/detail')) {
+            // cat_detail
+            if (preg_match('#^/detail/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_cat_detail;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'cat_detail')), array (  '_controller' => 'Thierry\\CatalogueBundle\\Controller\\CatalogueController::detailAction',));
+            }
+            not_cat_detail:
+
+            // cat_detail_post
+            if (preg_match('#^/detail/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_cat_detail_post;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'cat_detail_post')), array (  '_controller' => 'Thierry\\CatalogueBundle\\Controller\\CatalogueController::detailPostAction',));
+            }
+            not_cat_detail_post:
+
+        }
+
+        if (0 === strpos($pathinfo, '/modify')) {
+            // cat_modify
+            if (preg_match('#^/modify(?:/(?P<id>\\d+))?$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_cat_modify;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'cat_modify')), array (  'id' => 1,  '_controller' => 'Thierry\\CatalogueBundle\\Controller\\CatalogueController::modifyAction',));
+            }
+            not_cat_modify:
+
+            // cat_modify_Post
+            if (preg_match('#^/modify(?:/(?P<id>\\d+))?$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_cat_modify_Post;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'cat_modify_Post')), array (  'id' => 1,  '_controller' => 'Thierry\\CatalogueBundle\\Controller\\CatalogueController::modifyPostAction',));
+            }
+            not_cat_modify_Post:
+
+        }
+
+        // cat_delete
+        if (0 === strpos($pathinfo, '/delete') && preg_match('#^/delete(?:/(?P<id>\\d+))?$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cat_delete')), array (  'id' => 1,  '_controller' => 'Thierry\\CatalogueBundle\\Controller\\CatalogueController::deleteAction',));
+        }
+
+        // cat_add
+        if ($pathinfo === '/add') {
+            return array (  '_controller' => 'Thierry\\CatalogueBundle\\Controller\\CatalogueController::addAction',  '_route' => 'cat_add',);
+        }
+
+        // cat_categorie
+        if (0 === strpos($pathinfo, '/categorie') && preg_match('#^/categorie/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'cat_categorie')), array (  '_controller' => 'Thierry\\CatalogueBundle\\Controller\\CatalogueController::categorieAction',));
+        }
+
         if (0 === strpos($pathinfo, '/blog')) {
             // blog_index
             if (0 === strpos($pathinfo, '/blog/index') && preg_match('#^/blog/index(?:/(?P<page>\\d+))?$#s', $pathinfo, $matches)) {

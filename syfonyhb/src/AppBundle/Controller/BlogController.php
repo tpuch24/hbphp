@@ -36,7 +36,7 @@ class BlogController extends Controller
         
         //Lecture article
         //$articles = $repA->findAll();
-          
+        
         $articles = $repA->getArticlesIndex($page, $pagination_ind);
         
         $c = count($articles);
@@ -44,6 +44,11 @@ class BlogController extends Controller
 //            echo $post->getHeadline() . "\n";
 //        }
          $nbpages= ceil($c / $pagination_ind);
+         $extrait = $this->get('service_extractresume');
+         foreach ($articles as $article){
+             
+             $article->setResume($extrait->getExtrait($article->getContenu(), 20));
+         }
         return $this->render('blog/index.html.twig', [
             'page' => $page, 'articles' => $articles, 'nbpages'=> $nbpages
         ]);

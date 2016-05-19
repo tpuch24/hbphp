@@ -95,6 +95,8 @@ class Article
      */
     private $date_modification; 
     
+    private $resume;
+    
     function __construct() {
         $this->publication = true;
         $this->date = new \DateTime();
@@ -363,4 +365,14 @@ class Article
    {        
        $this->setDateModification(new \DateTime());
    }
+   
+   function getResume() {
+       return $this->resume;
+   }
+
+   function setResume($resume) {
+       $this->resume = $resume;
+   }
+
+
 }
